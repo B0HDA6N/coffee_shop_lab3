@@ -20,6 +20,6 @@
 
 | Splash & Auth | Main & Menu | Details & Account |
 |:---:|:---:|:---:|
-| <img src="assets/screenshots/splash_screen_page.jpg" width="180"> | <img src="assets/screenshots/home_page.png" width="180"> | <img src="assets/screenshots/detail_order_page.png" width="180"> |
+| <img src="assets/screenshots/splash_screen_page.png" width="180"> | <img src="assets/screenshots/home_page.png" width="180"> | <img src="assets/screenshots/detail_order_page.png" width="180"> |
 | <img src="assets/screenshots/sign_in_page.png" width="180"> | <img src="assets/screenshots/order_page.png" width="180"> | <img src="assets/screenshots/account_page.png" width="180"> |
 | <img src="assets/screenshots/sign_up_page.png" width="180"> | | |
