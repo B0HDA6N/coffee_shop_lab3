@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../Components/bottom_nav.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -148,10 +147,41 @@ class AccountPage extends StatelessWidget {
                   _buildSwitchItem("Face ID", true),
                   _buildSwitchItem("Passcode Lock", false),
                   const SizedBox(height: 30),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/login',
+                          (route) => false,
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4B2C20),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        elevation: 4,
+                        shadowColor: Colors.black.withOpacity(0.3),
+                      ),
+                      child: const Text(
+                        "Log Out",
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFFF6F2ED),
+                          fontSize: 14,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 30),
                 ],
               ),
             ),
-            bottomNavigationBar: const CustomBottomNav(currentIndex: 3),
           ),
         ),
       ),

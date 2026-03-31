@@ -21,7 +21,13 @@ class SignUpPage extends StatelessWidget {
                     Align(
                       alignment: Alignment.topRight,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            '/main',
+                            (route) => false,
+                          );
+                        },
                         child: const Text(
                           "Skip",
                           style: TextStyle(
@@ -109,7 +115,13 @@ class SignUpPage extends StatelessWidget {
                     const SizedBox(height: 10),
                     _buildInputField("Type your password", isPassword: true),
                     const SizedBox(height: 35),
-                    _buildActionButton("REGISTER", () {}),
+                    _buildActionButton("REGISTER", () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        '/main',
+                        (route) => false,
+                      );
+                    }),
                     const SizedBox(height: 25),
                     const Center(
                       child: Text(
@@ -123,7 +135,9 @@ class SignUpPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    _buildActionButton("SIGN IN", () {}),
+                    _buildActionButton("SIGN IN", () {
+                      Navigator.pop(context);
+                    }),
                     const SizedBox(height: 10),
                   ],
                 ),

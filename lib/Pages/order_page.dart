@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../Components/bottom_nav.dart';
 
 class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
@@ -118,30 +117,37 @@ class OrderPage extends StatelessWidget {
                       childAspectRatio: 0.75,
                       children: [
                         _buildCategoryCard(
+                          context,
                           "Hot Coffees",
                           "assets/images/hot_coffee.png",
                         ),
                         _buildCategoryCard(
+                          context,
                           "Hot Teas",
                           "assets/images/hot_tea.png",
                         ),
                         _buildCategoryCard(
+                          context,
                           "Hot Drinks",
                           "assets/images/hot_drinks.png",
                         ),
                         _buildCategoryCard(
+                          context,
                           "Frappucino",
                           "assets/images/frappuccino_coffee.png",
                         ),
                         _buildCategoryCard(
+                          context,
                           "Cold Coffees",
                           "assets/images/cold_coffee.png",
                         ),
                         _buildCategoryCard(
+                          context,
                           "Iced Teas",
                           "assets/images/iced_tea.png",
                         ),
                         _buildCategoryCard(
+                          context,
                           "Cold Drinks",
                           "assets/images/cold_drinks.png",
                         ),
@@ -151,49 +157,57 @@ class OrderPage extends StatelessWidget {
                 ],
               ),
             ),
-            bottomNavigationBar: const CustomBottomNav(currentIndex: 2),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildCategoryCard(String name, String imagePath) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.03),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Image.asset(imagePath, fit: BoxFit.contain),
+  Widget _buildCategoryCard(
+    BuildContext context,
+    String name,
+    String imagePath,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/detailPage');
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.03),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 12, left: 4, right: 4),
-            child: Text(
-              name,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 11,
-                fontWeight: FontWeight.w500,
-                color: Color(0xFF4B2C20),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Image.asset(imagePath, fit: BoxFit.contain),
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12, left: 4, right: 4),
+              child: Text(
+                name,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF4B2C20),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

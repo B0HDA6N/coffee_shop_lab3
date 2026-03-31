@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../Components/bottom_nav.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -237,10 +236,12 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       children: [
                         _buildFavoriteCard(
+                          context,
                           "Iced Pumpkin Spic...",
                           "assets/images/iced_coffee.png",
                         ),
                         _buildFavoriteCard(
+                          context,
                           "Mocha Cookie Fro...",
                           "assets/images/frappuccino_coffee.png",
                         ),
@@ -251,57 +252,65 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            bottomNavigationBar: const CustomBottomNav(currentIndex: 0),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildFavoriteCard(String name, String imagePath) {
-    return Container(
-      width: 160,
-      margin: const EdgeInsets.only(right: 15, bottom: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          const Positioned(
-            top: 12,
-            right: 12,
-            child: Icon(Icons.favorite, color: Colors.red, size: 22),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 10),
-                Expanded(child: Image.asset(imagePath, fit: BoxFit.contain)),
-                const SizedBox(height: 10),
-                Text(
-                  name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 13,
-                    color: Color(0xFF4B2C20),
-                  ),
-                ),
-              ],
+  Widget _buildFavoriteCard(
+    BuildContext context,
+    String name,
+    String imagePath,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/detailPage');
+      },
+      child: Container(
+        width: 160,
+        margin: const EdgeInsets.only(right: 15, bottom: 10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
             ),
-          ),
-        ],
+          ],
+        ),
+        child: Stack(
+          children: [
+            const Positioned(
+              top: 12,
+              right: 12,
+              child: Icon(Icons.favorite, color: Colors.red, size: 22),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 10),
+                  Expanded(child: Image.asset(imagePath, fit: BoxFit.contain)),
+                  const SizedBox(height: 10),
+                  Text(
+                    name,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 13,
+                      color: Color(0xFF4B2C20),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

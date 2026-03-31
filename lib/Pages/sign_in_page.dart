@@ -21,7 +21,13 @@ class SignInPage extends StatelessWidget {
                     Align(
                       alignment: Alignment.topRight,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            '/main',
+                            (route) => false,
+                          );
+                        },
                         child: const Text(
                           "Skip",
                           style: TextStyle(
@@ -107,7 +113,13 @@ class SignInPage extends StatelessWidget {
                     const SizedBox(height: 10),
                     _buildInputField("Type your password", isPassword: true),
                     const SizedBox(height: 35),
-                    _buildActionButton("LOGIN", () {}),
+                    _buildActionButton("LOGIN", () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        '/main',
+                        (route) => false,
+                      );
+                    }),
                     const SizedBox(height: 25),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -148,7 +160,9 @@ class SignInPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    _buildActionButton("CREATE NEW ACCOUNT", () {}),
+                    _buildActionButton("CREATE NEW ACCOUNT", () {
+                      Navigator.pushNamed(context, '/register');
+                    }),
                     const SizedBox(height: 10),
                   ],
                 ),

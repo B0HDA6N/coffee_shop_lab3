@@ -37,7 +37,16 @@ class DetailOrderPage extends StatelessWidget {
                 child: AppBar(
                   backgroundColor: Colors.transparent,
                   elevation: 0,
-                  leading: const Icon(Icons.menu, color: Color(0xFF4B2C20)),
+                  leading: IconButton(
+                    icon: const Icon(
+                      Icons.chevron_left,
+                      color: Color(0xFF4B2C20),
+                      size: 30,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                   centerTitle: true,
                   title: Image.asset(
                     'assets/images/cup_splash.png',
